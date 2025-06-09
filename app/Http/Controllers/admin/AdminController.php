@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\admin;
-
 use App\Models\User;
 use App\Models\KategoriPengaduan; // <- Tambahkan ini
 use Illuminate\Http\Request;

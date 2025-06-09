@@ -1,39 +1,20 @@
 <?php
-
-use App\Models\IzinPenelitian;
 use Illuminate\Support\Facades\Route;
-use App\Notifications\ServicesRequest;
 use App\Http\Controllers\AuthController;
-use Illuminate\Container\Attributes\Auth;
 use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\admin\AdminController;
-use App\Http\Controllers\Admin\LaporController;
-use App\Http\Controllers\User\ProfilController;
-use App\Http\Controllers\User\RatingController;
-use App\Http\Controllers\Admin\MutasiController;
-use App\Http\Controllers\Admin\KomentarController;
+use App\Http\Controllers\admin\LaporController;
+use App\Http\Controllers\user\ProfilController;
+use App\Http\Controllers\user\RatingController;
+use App\Http\Controllers\admin\KomentarController;
 use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\Admin\TanggapanController;
-use App\Http\Controllers\ServicesRequestController;
-use App\Http\Controllers\Admin\IzinPenelitianController;
-use App\Http\Controllers\Admin\LegalisirPiagamController;
-use App\Http\Controllers\Admin\PengaduanLangsungController;
-use App\Http\Controllers\Admin\PengaduanTidakLangsungController;
-use App\Http\Controllers\User\LaporController as UserLaporController;
-use App\Http\Controllers\User\KomentarController as UserKomentarController;
-use App\Http\Controllers\User\DashboardController as UserDashboardController;
-use App\Http\Controllers\User\PengaduanController as UserPengaduanController;
-use App\Http\Controllers\User\MutasiSiswaController as UserMutasiSiswaController;
-use App\Http\Controllers\User\IzinPenelitianController as UserIzinPenelitianController;
-use App\Http\Controllers\User\LegalisirPiagamController as UserLegalisirPiagamController;
-use App\Http\Controllers\Admin\PpidController as AdminPpidController;
+use App\Http\Controllers\admin\TanggapanController;
+use App\Http\Controllers\admin\IzinPenelitianController;
+use App\Http\Controllers\user\LaporController as UserLaporController;
+use App\Http\Controllers\user\KomentarController as UserKomentarController;
+use App\Http\Controllers\user\IzinPenelitianController as UserIzinPenelitianController;
+use App\Http\Controllers\admin\PpidController as AdminPpidController;
 use App\Http\Controllers\user\PpidController as UserPpidController;
-// Route untuk halaman home
-
-//  Route::get('/index', function () {
-//      return view('user.pengaduan.index');
-//  });
 
 Route::get('/', function () {
      return view('user.msekretariat');
@@ -45,13 +26,6 @@ Route::middleware('guest')->group(function(){
     Route::get('/registration', [AuthController::class, 'registration'])->name('user.registration');
     Route::post('user/registration/post', [AuthController::class, 'registrationProcess'])->name('user.registration.post');
 });
-
-// Route::middleware('auth:admin')->group(function(){
-//     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-// });
-// Route::middleware('auth:user')->group(function(){
-//     Route::get('/logout', [AuthController::class, 'logout'])->name('logout2');
-// });
 
 Route::middleware(['auth:user,admin'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -125,16 +99,16 @@ Route::group(['middleware' => 'auth:admin'], function(){
     Route::get('admin/izin_penelitian/pdf', [IzinPenelitianController::class, 'generatePDF'])->name('admin.izin_penelitian.pdf');
     Route::get('admin/izin_penelitian/excel/', [IzinPenelitianController::class, 'export'])->name('admin.izin_penelitian.excel');
 
-    Route::get('admin/ppid', [adminPpidController::class, 'index'])->name('admin.ppid.index');
-    Route::get('admin/ppid/create', [adminPpidController::class, 'create'])->name('admin.ppid.create');
-    Route::post('admin/ppid/store', [adminPpidController::class, 'store'])->name('admin.ppid.store');
-    Route::get('admin/ppid/edit/{id}', [adminPpidController::class, 'edit'])->name('admin.ppid.edit');
-    Route::put('admin/ppid/edit/{id}', [adminPpidController::class, 'update'])->name('admin.ppid.update');
-    Route::delete('admin/ppid/delete/{id}', [adminPpidController::class, 'destroy'])->name('admin.ppid.destroy');
-    Route::get('admin/ppid/show/{id}', [adminPpidController::class, 'show'])->name('admin.ppid.show');
-    Route::get('admin/ppid/filter', [adminPpidController::class, 'filter'])->name('admin.ppid.filter');
-    Route::get('admin/ppid/pdf', [adminPpidController::class, 'generatePDF'])->name('admin.ppid.pdf');
-    Route::get('admin/ppid/excel', [adminPpidController::class, 'export'])->name('admin.ppid.excel');
+    Route::get('admin/ppid', [AdminPpidController::class, 'index'])->name('admin.ppid.index');
+    Route::get('admin/ppid/create', [AdminPpidController::class, 'create'])->name('admin.ppid.create');
+    Route::post('admin/ppid/store', [AdminPpidController::class, 'store'])->name('admin.ppid.store');
+    Route::get('admin/ppid/edit/{id}', [AdminPpidController::class, 'edit'])->name('admin.ppid.edit');
+    Route::put('admin/ppid/edit/{id}', [AdminPpidController::class, 'update'])->name('admin.ppid.update');
+    Route::delete('admin/ppid/delete/{id}', [AdminPpidController::class, 'destroy'])->name('admin.ppid.destroy');
+    Route::get('admin/ppid/show/{id}', [AdminPpidController::class, 'show'])->name('admin.ppid.show');
+    Route::get('admin/ppid/filter', [AdminPpidController::class, 'filter'])->name('admin.ppid.filter');
+    Route::get('admin/ppid/pdf', [AdminPpidController::class, 'generatePDF'])->name('admin.ppid.pdf');
+    Route::get('admin/ppid/excel', [AdminPpidController::class, 'export'])->name('admin.ppid.excel');
 
     Route::get('/lapor', [LaporController::class, 'index'])->name('admin.lapor.index');
     Route::get('/lapor/{id}', [LaporController::class, 'show'])->name('admin.lapor.show');
@@ -200,31 +174,6 @@ Route::group(['middleware' => 'auth:admin'], function(){
     Route::delete('/destroy-sub/{subKategori}', [KategoriController::class, 'destroySub'])->name('kategori.destroy.sub');
 
     Route::put('/update-gabungan/{kategori}', [KategoriController::class, 'updateGabungan'])->name('kategori.update.gabungan');
-
-    // Route::get('admin/pengaduan_tidak_langsung', [PengaduanTidakLangsungController::class, 'index'])->name('admin.pengaduan_tidak_langsung');
-    // Route::get('admin/pengaduan_tidak_langsung/create', [PengaduanTidakLangsungController::class, 'create'])->name('admin.pengaduan_tidak_langsung.create');
-    // Route::post('admin/pengaduan_tidak_langsung', [PengaduanTidakLangsungController::class, 'store'])->name('admin.pengaduan_tidak_langsung.store');
-    // Route::get('admin/pengaduan_tidak_langsung/edit/{id}', [PengaduanTidakLangsungController::class, 'edit'])->name('admin.pengaduan_tidak_langsung.edit');
-    // Route::put('admin/pengaduan_tidak_langsung/edit/{id}', [PengaduanTidakLangsungController::class, 'update'])->name('admin.pengaduan_tidak_langsung.update');
-    // Route::delete('admin/pengaduan_tidak_langsung/delete/{id}', [PengaduanTidakLangsungController::class, 'destroy'])->name('admin.pengaduan_tidak_langsung.destroy');
-    // Route::get('admin/pengaduan_tidak_langsung/show/{id}', [PengaduanTidakLangsungController::class, 'show'])->name('admin.pengaduan_tidak_langsung.show');
-    // Route::get('admin/pengaduan_tidak_langsung/filter', [PengaduanTidakLangsungController::class, 'filter'])->name('admin.pengaduan_tidak_langsung.filter');
-    // Route::get('admin/pengaduan_tidak_langsung/pdf', [PengaduanTidakLangsungController::class, 'generatePDF'])->name('admin.pengaduan_tidak_langsung.pdf');
-    // Route::get('admin/pengaduan_tidak_langsung/excel/', [PengaduanTidakLangsungController::class, 'export'])->name('admin.pengaduan_tidak_langsung.excel');
-
-    // Route::get('admin/pengaduan_langsung', [PengaduanLangsungController::class, 'index'])->name('admin.pengaduan_langsung');
-    // Route::get('admin/pengaduan_langsung/create', [PengaduanLangsungController::class, 'create'])->name('admin.pengaduan_langsung.create');
-    // Route::post('admin/pengaduan_langsung', [PengaduanLangsungController::class, 'store'])->name('admin.pengaduan_langsung.store');
-    // Route::get('admin/pengaduan_langsung/edit/{id}', [PengaduanLangsungController::class, 'edit'])->name('admin.pengaduan_langsung.edit');
-    // Route::put('admin/pengaduan_langsung/edit/{id}', [PengaduanLangsungController::class, 'update'])->name('admin.pengaduan_langsung.update');
-    // Route::delete('admin/pengaduan_langsung/delete/{id}', [PengaduanLangsungController::class, 'destroy'])->name('admin.pengaduan_langsung.destroy');
-    // Route::get('admin/pengaduan_langsung/show/{id}', [PengaduanLangsungController::class, 'show'])->name('admin.pengaduan_langsung.show');
-    // Route::get('admin/pengaduan_langsung/filter', [PengaduanLangsungController::class, 'filter'])->name('admin.pengaduan_langsung.filter');
-    // Route::get('admin/pengaduan_langsung/pdf', [PengaduanLangsungController::class, 'generatePDF'])->name('admin.pengaduan_langsung.pdf');
-    // Route::get('admin/pengaduan_langsung/excel/', [PengaduanLangsungController::class, 'export'])->name('admin.pengaduan_langsung.excel');
-
-
-
 
 });
 
