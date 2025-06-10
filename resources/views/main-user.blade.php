@@ -9,8 +9,6 @@
     <meta http-equiv="Expires" content="0" />
     <title>@yield('title') | SINOVACE</title>
 
-    @vite(['resources/js/app.js']) <!-- Laravel Vite -->
-
     <!-- Select2 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 
@@ -108,6 +106,8 @@ use Illuminate\Support\Facades\Auth;
     </div>
 </div>
 
-<!-- Optional Bootstrap JS -->
+<!-- Bootstrap JS & Popper.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

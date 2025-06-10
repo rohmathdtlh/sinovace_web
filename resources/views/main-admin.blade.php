@@ -69,7 +69,7 @@
           <div class="app-brand" style="background-color: rgba(31, 49, 111, 0.95)">
             <a href="{{ url('admin/pengaduan_langsung') }}" class="app-brand-link">
                 <span class="app-brand-logo" style="margin-top: 20px; margin-bottom: 20px;">
-                    <img src="{{ asset('img/Logo.png') }}" alt="Logo Sinovace" style="height: 33px; width: auto;" />
+                    <img src="{{ asset('/img/Logo.png') }}" alt="Logo Sinovace" style="height: 33px; width: auto;" />
                 </span>
             </a>
           </div>
@@ -98,64 +98,6 @@
                   </a>
                 </li>
               @endif
-              {{-- @if(auth()->user()->kategori_id === null)
-              <li class="menu-item {{ Request::is('admin/ppid*') ? 'active open' : '' }}">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                  <i class="menu-icon tf-icons bx bx-paste"></i>
-                  <div data-i18n="Analytics">PPID</div>
-                </a>
-                <ul class="menu-sub">
-                  <li class="menu-item {{ Request::is('admin/ppid/permohonan') ? 'active' : '' }}">
-                    <a href="{{ url('admin/ppid/permohonan') }}" class="menu-link">
-                      <div data-i18n="Permohonan">Permohonan</div>
-                    </a>
-                  </li>
-                  <li class="menu-item {{ Request::is('admin/ppid/keberatan') ? 'active' : '' }}">
-                    <a href="{{ url('admin/ppid/keberatan') }}" class="menu-link">
-                      <div data-i18n="Keberatan">Keberatan</div>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              @endif --}}
-
-              {{-- <!-- Pengaduan -->
-              <li class="menu-item {{ Request::is('admin/pengaduan_langsung*') || Request::is('admin/pengaduan_tidak_langsung*') ? 'active open' : '' }}">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                  <i class="menu-icon tf-icons bx bx-support"></i>
-                  <div data-i18n="Tables">Layanan Pengaduan</div>
-                </a>
-                <ul class="menu-sub">
-                  <li class="menu-item {{ Request::is('admin/pengaduan_langsung*') ? 'active' : '' }}">
-                    <a href="{{ url('admin/pengaduan_langsung') }}" class="menu-link">
-                      <div data-i18n="Tables">Langsung</div>
-                    </a>
-                  </li>
-                  <li class="menu-item {{ Request::is('admin/pengaduan_tidak_langsung*') ? 'active' : '' }}">
-                    <a href="{{ url('admin/pengaduan_tidak_langsung') }}" class="menu-link">
-                      <div data-i18n="Tables">Tidak Langsung</div>
-                    </a>
-                  </li>
-                </ul>
-              </li> --}}
-
-              <!-- Mutasi -->
-              {{-- <li class="menu-item {{ Request::is('admin/legalisir_piagam*') ? 'active' : '' }}">
-                <a href="{{ url('admin/legalisir_piagam') }}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-file"></i>
-                  <div data-i18n="Analytics">Legalisir Piagam</div>
-                </a>
-              </li> --}}
-              
-              
-              <!-- Izin Penelitian -->
-              {{-- <li class="menu-item {{ Request::is('admin/mutasi_siswa*') ? 'active' : '' }}">
-                <a href="{{ url('admin/mutasi_siswa') }}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bxs-school"></i>
-                  <div data-i18n="Analytics">Mutasi Siswa</div>
-                </a>
-              </li> --}}
-
                <div class="menu-inner-shadow"></div>
                   <ul class="menu-inner py-1">
               @php
