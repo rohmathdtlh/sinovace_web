@@ -102,13 +102,13 @@ class LaporController extends Controller
       
 
         // Kirim notifikasi ke semua admin
-        // $admins = User::where('role', 'admin')
-        //     ->whereNull('kategori_id') // hanya admin utama
-        //     ->get();
+        $admins = User::where('role', 'admin')
+            ->whereNull('kategori_id') // hanya admin utama
+            ->get();
 
-        // foreach ($admins as $admin) {
-        //     $admin->notify(new ServicesRequest($data, 'pengaduan'));
-        // }
+        foreach ($admins as $admin) {
+            $admin->notify(new ServicesRequest($data, 'pengaduan'));
+        }
 
         return redirect()->route('user.pengaduan.index')->with('success', 'Pengaduan berhasil dikirim!');
     }

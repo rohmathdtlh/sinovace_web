@@ -25,6 +25,7 @@ class TanggapanController extends Controller
                        ->where('kategori_id', $kategori->id)
                        ->paginate(3);
 
+        $kategori = null; // <-- tambahkan baris ini
         return view('admin.tanggapan.index', compact('lapors', 'kategori'));
     }
 

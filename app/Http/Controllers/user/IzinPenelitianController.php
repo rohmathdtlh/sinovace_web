@@ -81,10 +81,10 @@ class IzinPenelitianController extends Controller
         ]);
 
         // Mengirim email notifikasi ke admin
-        // $adminEmail = 'sinovacedisdik@gmail.com';  // Ganti dengan email admin yang sesuai
-        // Mail::to($adminEmail)->send(new NotificationMail($izinPenelitian));
-        // // Mengirim email konfirmasi ke pengguna
-        // Mail::to($request->email)->send(new NotificationMail($izinPenelitian));
+        $adminEmail = 'sinovacedisdik@gmail.com';  // Ganti dengan email admin yang sesuai
+        Mail::to($adminEmail)->send(new NotificationMail($izinPenelitian));
+        // Mengirim email konfirmasi ke pengguna
+        Mail::to($request->email)->send(new NotificationMail($izinPenelitian));
 
         // Tentukan jenis formulir
         if ($request->has('surat_lama')) {

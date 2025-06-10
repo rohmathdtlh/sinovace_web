@@ -20,18 +20,18 @@
             </h3>
 
         @auth('user')
-        <div class="text-end">
-            <button class="btn btn-light fw-semibold me-2">
+        <div class="text-end d-flex flex-column flex-sm-row align-items-end align-items-sm-center gap-2">
+            <button class="btn btn-light fw-semibold me-0 mb-2 mb-sm-0">
                 <i class="bi bi-person-circle me-2"></i>
                 {{ Auth::guard('user')->user()->name }}
             </button>
-                <form action="{{ route('logout') }}" method="POST" class="d-inline">
-                    @csrf
-                    <button type="submit" class="btn btn-danger fw-semibold">
-                        <i class="bi bi-box-arrow-right me-2"></i>Sign Out
-                    </button>
-                </form>
-            </div>
+            <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                @csrf
+                <button type="submit" class="btn btn-danger fw-semibold">
+                    <i class="bi bi-box-arrow-right me-2"></i>Logout
+                </button>
+            </form>
+        </div>
         @else
             <div class="text-end">
                 <a href="{{ route('login') }}" class="btn btn-primary">Login</a>

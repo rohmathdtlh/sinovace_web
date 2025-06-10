@@ -1,13 +1,13 @@
 @extends('main-admin')
 
-@section('title', 'Daftar Tanggapan - ' . ($kategori ? $kategori->nama_kategori : 'Semua'))
+@section('title', 'Daftar Tanggapan - ' . (isset($kategori) && $kategori ? $kategori->nama_kategori : 'Semua'))
 
 @section('content')
 <div class="content">
   <div class="container-xxl flex-grow-1 container-p-y">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h4 class="fw-bold py-3 mb-4 text-white">
-        {{ $kategori ? $kategori->nama_kategori : 'Semua Laporan' }}
+        {{ isset($kategori) && $kategori ? $kategori->nama_kategori : 'Semua Laporan' }}
       </h4>
     </div>
 
@@ -224,11 +224,11 @@
           <div class="text-center py-5">
             <i class="bx bx-message-alt-error bx-lg text-muted mb-3"></i>
             <p class="text-muted">Belum ada laporan yang perlu ditanggapi</p>
-            @if($kategori)
-              <a href="{{ route('admin.tanggapan.index') }}" class="btn btn-sm btn-outline-dark">
-                <i class="bx bx-arrow-back me-1"></i> Lihat Semua Laporan
-              </a>
-            @endif
+          @if(isset($kategori) && $kategori)
+            <a href="{{ route('admin.tanggapan.index') }}" class="btn btn-sm btn-outline-dark">
+              <i class="bx bx-arrow-back me-1"></i> Lihat Semua Laporan
+            </a>
+          @endif
           </div>
         @endforelse
 

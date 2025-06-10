@@ -69,7 +69,7 @@
           <div class="app-brand" style="background-color: rgba(31, 49, 111, 0.95)">
             <a href="{{ url('admin/pengaduan_langsung') }}" class="app-brand-link">
                 <span class="app-brand-logo" style="margin-top: 20px; margin-bottom: 20px;">
-                    <img src="{{ asset('build/assets/Logo.png') }}" alt="Logo Sinovace" style="height: 33px; width: auto;" />
+                    <img src="{{ asset('img/Logo.png') }}" alt="Logo Sinovace" style="height: 33px; width: auto;" />
                 </span>
             </a>
           </div>
@@ -311,7 +311,7 @@
               <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                 <div class="avatar avatar-online">
                   {{-- <img src="{{ asset('profile/' . Auth::user()->avatar) }}" alt="Avatar" class="avatar w-px-40 h-auto rounded-circle"> --}}
-                  <img src="{{ asset('build/assets/Profil.png') }}" alt class="w-px-40 h-auto rounded-circle" />
+                  <img src="{{ asset('img/Profil.png') }}" alt class="w-px-40 h-auto rounded-circle" />
                 </div>
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
@@ -321,7 +321,7 @@
                       <div class="flex-shrink-0 me-3">
                         <div class="avatar avatar-online">
                           {{-- <img src="{{ asset('profile/' . Auth::user()->avatar) }}" alt="Avatar" class="w-px-10 h-auto rounded-circle" /> --}}
-                          <img src="{{ asset('build/assets/Profil.png') }}" alt class="w-px-40 h-auto rounded-circle" />
+                          <img src="{{ asset('img/Profil.png') }}" alt class="w-px-40 h-auto rounded-circle" />
                         </div>
                       </div>
                       <div class="flex-grow-1">
